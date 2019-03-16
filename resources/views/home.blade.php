@@ -11,6 +11,9 @@
         <ul>
             <li><a href="{{route('facturas.index')}}" title="Factura Index"> Facturacion</a></li>
         </ul>
+        <ul>
+            <li><a href="{{route('usuarios.index')}}" title="Factura Index">Usuarios</a></li>
+        </ul>
 
     
     

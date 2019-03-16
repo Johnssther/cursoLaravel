@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 
-class FacturasController extends Controller
+class UsuariosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class FacturasController extends Controller
      */
     public function index()
     {
-
-        return view('facturas.lista');
-        
+        $usuarios = Usuario::get();
+        return view('usuarios.lista',['usuarios'=>$usuarios]);
     }
 
     /**
@@ -26,8 +25,7 @@ class FacturasController extends Controller
      */
     public function create()
     {
-        $usuarios = Usuario::get();
-        return view('facturas.create',['usuarios'=>$usuarios]);
+        return view('usuarios.create');
     }
 
     /**
@@ -38,7 +36,15 @@ class FacturasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario;
+        $usuario->nombre_usuario = $request->nombre_usuario;
+        $usuario->apellido_usuario = $request->apellido_usuario;
+        $usuario->correo_usuario = $request->correo_usuario;
+        $usuario->telefono_usuario = $request->telefono_usuario;
+        $usuario->direccion_usuario = $request->direccion_usuario;
+        $usuario->save();
+        return redirect()->route('usuarios.index');
+        dd('Datos Guardados');
     }
 
     /**
@@ -49,7 +55,10 @@ class FacturasController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuario = Usuario::find($id);
+        return view('usuarios.show',['usuario'=>$usuario]);
+        
+
     }
 
     /**
@@ -60,7 +69,8 @@ class FacturasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = Usuario::find($id);
+        return view('usuarios.edit',['usuario'=>$usuario]);
     }
 
     /**
@@ -72,7 +82,14 @@ class FacturasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = Usuario::find($id);
+        $usuario->nombre_usuario = $request->nombre_usuario;
+        $usuario->apellido_usuario = $request->apellido_usuario;
+        $usuario->correo_usuario = $request->correo_usuario;
+        $usuario->telefono_usuario = $request->telefono_usuario;
+        $usuario->direccion_usuario = $request->direccion_usuario;
+        $usuario->save();
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -83,6 +100,8 @@ class FacturasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Usuario::destroy($id);
+        return redirect()->route('usuarios.index');
+        dd('Eliminando', $id);
     }
 }

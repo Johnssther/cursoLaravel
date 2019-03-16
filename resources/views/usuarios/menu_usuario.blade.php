@@ -8,17 +8,17 @@
     </head>
     <style>
         body {
-            color: green;
+            color: red;
         }
     </style>
     <body>
-        <h1>Menu Facturacion</h1>
+        <h1>Menu Usuario</h1>
         <ul>
             <li><a href="{{route('home')}}" title="Regresar al Inicio"> Ir al Home</a></li>
-            <li><a href="{{route('facturas.index')}}" title="Lista de Facturas"> Lista de Facturas</a></li>
-            <li><a href="{{route('facturas.create')}}" title="Crear Nueva Factura"> Crear Nueva de Factura</a></li>
+            <li><a href="{{route('usuarios.index')}}" title="Lista de Facturas"> Lista de Usuarios</a></li>
+            <li><a href="{{route('usuarios.create')}}" title="Crear Nueva Factura"> Crear Nuevo Usuario</a></li>
         </ul>
-  
+
 
 
         <section>

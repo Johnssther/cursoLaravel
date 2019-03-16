@@ -15,3 +15,4 @@
 Route::get('/',['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::resource('facturas', 'FacturasController', ['only'=>['index', 'create', 'store']]);
+Route::resource('usuarios', 'UsuariosController');
