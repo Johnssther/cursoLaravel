@@ -19,7 +19,7 @@ class CreateUsuariosTable extends Migration
             $table->string('apellido_usuario');
             $table->string('correo_usuario');
             $table->integer('telefono_usuario')->nullable();
-            $table->integer('direccion_usuario')->nullable();
+            $table->string('direccion_usuario')->nullable();
             $table->timestamps();
         });
     }

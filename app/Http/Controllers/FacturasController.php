@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Factura;
 
 class FacturasController extends Controller
 {
@@ -14,8 +15,8 @@ class FacturasController extends Controller
      */
     public function index()
     {
-
-        return view('facturas.lista');
+        $facturas = Factura::get();
+        return view('facturas.lista',['facturas'=>$facturas]);
         
     }
 
@@ -38,7 +39,16 @@ class FacturasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $factura = new Factura;
+        $factura->numero_factura = $request->numero_factura;
+        $factura->id_usuario = $request->id_usuario;
+        $factura->valor_factura = $request->valor_factura;
+        $factura->descuento = $request->descuento;
+        $factura->fecha_factura = $request->fecha_factura;
+        $factura->save();
+        return redirect()->route('facturas.index');
+        dd('Datos Guardados');
+
     }
 
     /**
@@ -49,7 +59,9 @@ class FacturasController extends Controller
      */
     public function show($id)
     {
-        //
+       $factura = Factura::find($id);
+        return view('facturas.show',['factura'=>$factura]);
+        
     }
 
     /**
@@ -60,7 +72,9 @@ class FacturasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuarios = Usuario::get();
+        $factura = Factura::find($id);
+        return view('facturas.edit',['factura'=>$factura, 'usuarios'=>$usuarios]);
     }
 
     /**
@@ -72,7 +86,13 @@ class FacturasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $factura = Factura::find($id);
+        $factura->numero_factura = $request->numero_factura;
+        $factura->id_usuario = $request->id_usuario;
+        $factura->valor_factura = $request->valor_factura;
+        $factura->descuento = $request->descuento;
+        $factura->save();
+        return redirect()->route('facturas.index');
     }
 
     /**
@@ -83,6 +103,8 @@ class FacturasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Factura::destroy($id);
+        return redirect()->route('facturas.index');
+        dd('Eliminando', $id);
     }
 }

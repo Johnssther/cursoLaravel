@@ -1,4 +1,4 @@
-@extends('menu')
+@extends('usuarios.menu_usuario')
     @section('contenido')
         <h1>Formularioo Crear Usuarios</h1>
         <form action="{{route ('usuarios.store')}}" method="POST">

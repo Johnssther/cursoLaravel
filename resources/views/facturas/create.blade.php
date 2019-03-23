@@ -13,8 +13,8 @@
                 <tr>
                     <td>Usuario</td>
                     <td>
-                        <select name="id_usuario">
-                            <option value="0">Seleccione    </option>
+                        <select name="id_usuario" required>
+                            <option value="0" required>Seleccione</option>
                         @foreach ($usuarios as $usuario)
                             <option value="{{$usuario->id}}">{{$usuario->nombre_usuario}} {{$usuario->apellido_usuario}}</option>
                         @endforeach
@@ -22,12 +22,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Valor</td>
-                    <td><input type="number" name="valor_factura"></td>
+                    <td>Valor $</td>
+                    <td><input type="number" name="valor_factura" placeholder="$"></td>
                 </tr>
                 <tr>
-                    <td>Descuento</td>
-                    <td><input type="number" name="descuento"></td>
+                    <td>Descuento %</td>
+                    <td><input type="number" name="descuento" placeholder="%"></td>
+                </tr>
+                <tr>
+                    <td>Fecha </td>
+                    <td><input type="date" name="fecha_factura"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Generar Factura"></td>
