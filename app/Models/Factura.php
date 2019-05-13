@@ -10,7 +10,9 @@ class Factura extends Model
     public $timestamp = true;
 
     public function usuario() {
-    return $this->hasOne('App\Models\usuario','id','id_usuario');
+
+        return $this->hasOne('App\Models\Usuario','id','id_usuario');
+
     }
 
 }
