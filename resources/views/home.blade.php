@@ -15,6 +15,8 @@
             <li><a href="{{route('usuarios.index')}}" title="Factura Index">Usuarios</a></li>
         </ul>
 
+        <p>commit</p>
+
     
     
 </body>
